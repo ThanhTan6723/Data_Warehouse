@@ -18,6 +18,7 @@ public class DBConnection {
     private static String username;
     private static String password;
     private static Connection connection;
+
     static {
         // 2. Lấy các thuộc tính của database trong file config.properties
         Properties properties = new Properties();
@@ -33,7 +34,7 @@ public class DBConnection {
             port = properties.getProperty("port"); // port để kết nối với CSDL
             nameDB = properties.getProperty("name_database"); // tên database muốn kết nối
 
-            urlDb = "jdbc:"+db+"://"+host+":"+port+"/"+nameDB;
+            urlDb = "jdbc:" + db + "://" + host + ":" + port + "/" + nameDB;
 
             username = properties.getProperty("username"); // tên đăng nhập để kết nối với db
             password = properties.getProperty("password"); // password để dăng nhập
@@ -51,12 +52,12 @@ public class DBConnection {
         }
     }
 
-    public DBConnection(){
+    public DBConnection() {
 
     }
 
     //Kết nối với database
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         if (connection == null) {
             try {
                 // connect
@@ -72,7 +73,7 @@ public class DBConnection {
     }
 
     //Đóng kết nối
-    public static void closeConnection(){
+    public static void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();
